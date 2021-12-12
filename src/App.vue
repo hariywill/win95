@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-      <div id="screen" class="screen"></div>
+      <div id="screen" class="screen">App</div>
       <navBar/>
     </div>
 </template>
@@ -12,7 +12,12 @@ export default {
   name: 'App',
   components: {
     NavBar
-  }
+  },
+  methods: {},
+  computed: {},
+  mounted() {
+    
+  },
 }
 </script>
 

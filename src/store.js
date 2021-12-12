@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export const store = new Vue.store({
+export const store = new Vuex.store({
     state: {
         // Start Menu
         isShownMenu: false,
@@ -19,7 +19,9 @@ export const store = new Vue.store({
         },
     },
     getters: {
-        
+        activeWindow: state => {
+            return state.activeWindow
+        },
     },
     actions: {}
 })
