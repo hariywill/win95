@@ -1,19 +1,30 @@
 <template>
     <div id="app">
-      <div id="screen" class="screen">App</div>
+      <div id="screen" class="screen" v-on:click="resetWindow">
+        <startMenu v-if="$store.getters.activeWindow=='Menu'"  />
+      </div>
+      
       <navBar/>
     </div>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue'
+import StartMenu from './components/StartMenu.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBar
+    NavBar,
+    StartMenu,
+},
+  methods: {
+    resetWindow() {
+      console.log('Reset Menu');
+      this.$store.commit('updateActiveWindow', '')
+      this.$store.commit('toggleShownMenu', false)
+    }
   },
-  methods: {},
   computed: {},
   mounted() {
     
