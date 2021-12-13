@@ -1,6 +1,7 @@
 <template>
     <div id="app">
-      <div id="screen" class="screen" v-on:click="resetWindow">
+      <div id="screen" class="screen" style="position: relative; z-index: 100;" v-on:click="resetWindow">
+        <desktop style="position: absolute;" />
         <startMenu v-if="$store.getters.activeWindow=='Menu'"  />
       </div>
       
@@ -11,12 +12,14 @@
 <script>
 import NavBar from './components/NavBar.vue'
 import StartMenu from './components/StartMenu.vue'
+import Desktop from './components/Desktop.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
     StartMenu,
+    Desktop
 },
   methods: {
     resetWindow() {
@@ -34,11 +37,22 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    font-family: 'MS Sans Serif';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    width: 100%;
+    height: calc(var(--vh, 1vh) * 100);
+    flex-direction: column;
+    overflow: hidden;
+}
+body {
+  margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #018281;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 </style>
