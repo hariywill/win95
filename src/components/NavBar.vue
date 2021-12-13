@@ -1,10 +1,10 @@
 <template>
     <div class="wrapper">
         <div class="bar-container">
-            <div class="start-menu" v-on:click="showMenu">
-                <div >
+            <div class="start-menu" v-on:click="showMenu" :class="$store.getters.activeWindow=='Menu' ? 'start-menu-hidden' : 'start-menu'">
+                <div :class="$store.getters.activeWindow=='Menu' ? 'border' : 'container-border'">
                     <img src="../assets/win95Icons/win95.png" class="start-icon">
-                    <div>Start</div>
+                    <div style="padding-left: 3px; font-size: 0.9rem; font-weight: bold;">Start</div>
                 </div>
             </div>
             <div class="icon-bar">
@@ -46,8 +46,7 @@ export default ({
     },
     data() {
         return {
-            time: '',
-            date: ''
+            time: ''
         }
     },
     beforeMount() {
@@ -58,7 +57,11 @@ export default ({
     methods: {
         toogleShow() {},
         showMenu() {
-            console.log("SHow menu!");
+            console.log(this)
+            this.$store.commit('updateActiveWindow', 'Menu')
+            this.$store.commit('toggleShownMenu', true)
+            console.log(this.$store.getters.activeWindow);
+            console.log(this.$store.getters.isShownMenu);
         },
     },
 })
@@ -101,6 +104,18 @@ export default ({
     /* justify-content: space-between; */
     justify-content: center;
     align-items: center;
+}
+
+.border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: black dotted 1px;
 }
 .icon-bar {
     border-style: dashed;
