@@ -99,6 +99,7 @@ button {
     font-size: 12px;
     color: white;
     padding: 10px;
+    border-style: dashed;
 }
 .icon {
     width: 30px;

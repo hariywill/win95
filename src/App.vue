@@ -3,6 +3,7 @@
       <div id="screen" class="screen" style="position: relative; z-index: 100;" v-on:click="resetWindow">
         <desktop style="position: absolute;" />
         <startMenu v-if="$store.getters.activeWindow=='Menu'"  />
+        <biography />
       </div>
       
       <navBar/>
@@ -13,13 +14,15 @@
 import NavBar from './components/NavBar.vue'
 import StartMenu from './components/StartMenu.vue'
 import Desktop from './components/Desktop.vue'
+import Biography from './components/Biography.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
     StartMenu,
-    Desktop
+    Desktop,
+    Biography
 },
   methods: {
     resetWindow() {
